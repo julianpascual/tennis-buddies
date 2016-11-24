@@ -53,6 +53,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(length = 100, unique = true)
     private String email;
 
+    @Size(max = 100)
+    @Column(length = 100, unique = false)
+    private String lastPosition;
+
     @NotNull
     @Column(nullable = false)
     private boolean activated = false;
@@ -190,6 +194,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.persistentTokens = persistentTokens;
     }
 
+    public void setLastPosition(String lastPosition) { this.lastPosition = lastPosition; }
+
+    public String getLastPosition() { return lastPosition; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -223,6 +231,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", activated='" + activated + '\'' +
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +
+            ", lastPosition='" + lastPosition + '\'' +
             "}";
     }
 }
