@@ -84,7 +84,7 @@ public class UserService {
     }
 
     public User createUser(String login, String password, String firstName, String lastName, String email,
-        String langKey) {
+        String langKey, String lastPosition) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -103,6 +103,7 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
+        newUser.setLastPosition(lastPosition);
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
@@ -131,24 +132,26 @@ public class UserService {
         user.setResetKey(RandomUtil.generateResetKey());
         user.setResetDate(ZonedDateTime.now());
         user.setActivated(true);
+        user.setLastPosition(managedUserVM.getLastPosition());
         userRepository.save(user);
         log.debug("Created Information for User: {}", user);
         return user;
     }
 
-    public void updateUser(String firstName, String lastName, String email, String langKey) {
+    public void updateUser(String firstName, String lastName, String email, String langKey, String lastPosition) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
             u.setEmail(email);
             u.setLangKey(langKey);
+            u.setLastPosition(lastPosition);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });
     }
 
     public void updateUser(Long id, String login, String firstName, String lastName, String email,
-        boolean activated, String langKey, Set<String> authorities) {
+        boolean activated, String langKey, Set<String> authorities, String lastPosition) {
 
         Optional.of(userRepository
             .findOne(id))
@@ -159,6 +162,7 @@ public class UserService {
                 u.setEmail(email);
                 u.setActivated(activated);
                 u.setLangKey(langKey);
+                u.setLastPosition(lastPosition);
                 Set<Authority> managedAuthorities = u.getAuthorities();
                 managedAuthorities.clear();
                 authorities.stream().forEach(

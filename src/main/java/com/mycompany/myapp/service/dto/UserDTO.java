@@ -37,6 +37,9 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    @Size(max = 100)
+    private String lastPosition;
+
     public UserDTO() {
     }
 
@@ -44,11 +47,11 @@ public class UserDTO {
         this(user.getLogin(), user.getFirstName(), user.getLastName(),
             user.getEmail(), user.getActivated(), user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
-                .collect(Collectors.toSet()));
+                .collect(Collectors.toSet()), user.getLastPosition());
     }
 
     public UserDTO(String login, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities) {
+        String email, boolean activated, String langKey, Set<String> authorities, String lastPosition) {
 
         this.login = login;
         this.firstName = firstName;
@@ -57,6 +60,7 @@ public class UserDTO {
         this.activated = activated;
         this.langKey = langKey;
         this.authorities = authorities;
+        this.lastPosition = lastPosition;
     }
 
     public String getLogin() {
@@ -87,6 +91,8 @@ public class UserDTO {
         return authorities;
     }
 
+    public String getLastPosition() { return lastPosition; }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -96,7 +102,8 @@ public class UserDTO {
             ", email='" + email + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
-            ", authorities=" + authorities +
+            ", authorities=" + authorities + '\'' +
+            ", lastPosition='" + lastPosition +
             "}";
     }
 }

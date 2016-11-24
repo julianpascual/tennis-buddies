@@ -44,8 +44,8 @@ public class ManagedUserVM extends UserDTO {
 
     public ManagedUserVM(Long id, String login, String password, String firstName, String lastName,
                          String email, boolean activated, String langKey, Set<String> authorities,
-                         String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate) {
-        super(login, firstName, lastName, email, activated, langKey, authorities);
+                         String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate, String lastPosition) {
+        super(login, firstName, lastName, email, activated, langKey, authorities, lastPosition);
         this.id = id;
         this.createdBy = createdBy;
         this.createdDate = createdDate;
