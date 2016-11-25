@@ -45,6 +45,12 @@ security:
         enabled: false
 
 server:
+    port: 8443
+    ssl:
+        key-store: keystore.p12
+        key-store-password: tennispassword
+        keyStoreType: PKCS12
+        keyAlias: tomcat
     session:
         cookie:
             http-only: true

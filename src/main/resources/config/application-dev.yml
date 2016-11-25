@@ -53,7 +53,15 @@ liquibase:
     contexts: dev
 
 server:
-    port: 8080
+    port: 8443
+    ssl:
+        key-store: keystore.p12
+        key-store-password: tennispassword
+        keyStoreType: PKCS12
+        keyAlias: tomcat
+    session:
+        cookie:
+            http-only: true
 
 # ===================================================================
 # JHipster specific properties
