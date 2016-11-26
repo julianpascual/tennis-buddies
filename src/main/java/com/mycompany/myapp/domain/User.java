@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.validation.groups.ConvertGroup;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Locale;
@@ -54,8 +55,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String email;
 
     @Size(max = 100)
-    @Column(length = 100, unique = false)
+    @Column(name = "last_position", length = 100)
     private String lastPosition;
+
+    @Column(name = "birthday", nullable = false)
+    private ZonedDateTime birthday;
 
     @NotNull
     @Column(nullable = false)
@@ -198,6 +202,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public String getLastPosition() { return lastPosition; }
 
+    public void setBirthday(ZonedDateTime birthday) {
+        this.birthday = birthday;
+    }
+
+    public ZonedDateTime getBirthday() {
+        return birthday;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -232,6 +244,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +
             ", lastPosition='" + lastPosition + '\'' +
+            ", birthday='" + birthday + '\'' +
             "}";
     }
 }

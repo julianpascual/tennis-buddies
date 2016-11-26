@@ -8,6 +8,7 @@ import com.mycompany.myapp.domain.User;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.*;
+import java.time.ZonedDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -40,6 +41,8 @@ public class UserDTO {
     @Size(max = 100)
     private String lastPosition;
 
+    private ZonedDateTime birthday;
+
     public UserDTO() {
     }
 
@@ -47,11 +50,12 @@ public class UserDTO {
         this(user.getLogin(), user.getFirstName(), user.getLastName(),
             user.getEmail(), user.getActivated(), user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
-                .collect(Collectors.toSet()), user.getLastPosition());
+                .collect(Collectors.toSet()), user.getLastPosition(), user.getBirthday());
     }
 
     public UserDTO(String login, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities, String lastPosition) {
+        String email, boolean activated, String langKey, Set<String> authorities,
+                   String lastPosition, ZonedDateTime birthday) {
 
         this.login = login;
         this.firstName = firstName;
@@ -61,6 +65,7 @@ public class UserDTO {
         this.langKey = langKey;
         this.authorities = authorities;
         this.lastPosition = lastPosition;
+        this.birthday = birthday;
     }
 
     public String getLogin() {
@@ -93,6 +98,10 @@ public class UserDTO {
 
     public String getLastPosition() { return lastPosition; }
 
+    public ZonedDateTime getBirthday() {
+        return birthday;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -103,7 +112,8 @@ public class UserDTO {
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
             ", authorities=" + authorities + '\'' +
-            ", lastPosition='" + lastPosition +
+            ", lastPosition='" + lastPosition + '\'' +
+            ", birthday='" + birthday +
             "}";
     }
 }

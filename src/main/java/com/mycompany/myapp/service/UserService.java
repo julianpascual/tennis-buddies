@@ -84,7 +84,7 @@ public class UserService {
     }
 
     public User createUser(String login, String password, String firstName, String lastName, String email,
-        String langKey, String lastPosition) {
+        String langKey, String lastPosition, ZonedDateTime birthday) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -104,6 +104,7 @@ public class UserService {
         authorities.add(authority);
         newUser.setAuthorities(authorities);
         newUser.setLastPosition(lastPosition);
+        newUser.setBirthday(birthday);
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
@@ -133,25 +134,27 @@ public class UserService {
         user.setResetDate(ZonedDateTime.now());
         user.setActivated(true);
         user.setLastPosition(managedUserVM.getLastPosition());
+        user.setBirthday(managedUserVM.getBirthday());
         userRepository.save(user);
         log.debug("Created Information for User: {}", user);
         return user;
     }
 
-    public void updateUser(String firstName, String lastName, String email, String langKey, String lastPosition) {
+    public void updateUser(String firstName, String lastName, String email, String langKey, String lastPosition, ZonedDateTime birthday) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
             u.setEmail(email);
             u.setLangKey(langKey);
             u.setLastPosition(lastPosition);
+            u.setBirthday(birthday);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });
     }
 
     public void updateUser(Long id, String login, String firstName, String lastName, String email,
-        boolean activated, String langKey, Set<String> authorities, String lastPosition) {
+        boolean activated, String langKey, Set<String> authorities, String lastPosition, ZonedDateTime birthday) {
 
         Optional.of(userRepository
             .findOne(id))
@@ -163,6 +166,7 @@ public class UserService {
                 u.setActivated(activated);
                 u.setLangKey(langKey);
                 u.setLastPosition(lastPosition);
+                u.setBirthday(birthday);
                 Set<Authority> managedAuthorities = u.getAuthorities();
                 managedAuthorities.clear();
                 authorities.stream().forEach(
