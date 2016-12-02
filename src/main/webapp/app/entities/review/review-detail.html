@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Review</span> {{vm.review.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Review</span></dt>
+        <dd>
+            <span>{{vm.review.review}}</span>
+        </dd>
+        <dt><span>Comment</span></dt>
+        <dd>
+            <span>{{vm.review.comment}}</span>
+        </dd>
+        <dt><span data-translate="tennisBuddiesApp.review.id_user_from">Id User From</span></dt>
+        <dd>
+            {{vm.review.id_user_from}}
+        </dd>
+        <dt><span data-translate="tennisBuddiesApp.review.id_user_to">Id User To</span></dt>
+        <dd>
+            {{vm.review.id_user_to}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="review-detail.edit({id:vm.review.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

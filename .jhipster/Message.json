@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "id_user_from",
+            "otherEntityName": "jhi_user",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "id_user_from"
+        },
+        {
+            "relationshipName": "id_user_to",
+            "otherEntityName": "jhi_user",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "id_user_from"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "message",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20161202002549",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "message",
+    "pagination": "no"
+}
