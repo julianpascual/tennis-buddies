@@ -9,6 +9,7 @@
             'ngAria',
             'ngCacheBuster',
             'ngFileUpload',
+            'ngMap',
             'ui.bootstrap',
             'ui.bootstrap.datetimepicker',
             'ui.router',

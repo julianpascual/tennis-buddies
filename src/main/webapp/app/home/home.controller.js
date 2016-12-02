@@ -5,9 +5,9 @@
         .module('tennisBuddiesApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', 'NgMap', '$state'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, NgMap, $state) {
         var vm = this;
 
         vm.account = null;
@@ -16,6 +16,12 @@
         vm.register = register;
         $scope.$on('authenticationSuccess', function() {
             getAccount();
+        });
+
+        NgMap.getMap().then(function(map) {
+            console.log(map.getCenter());
+            console.log('markers', map.markers);
+            console.log('shapes', map.shapes);
         });
 
         getAccount();
@@ -28,6 +34,13 @@
         }
         function register () {
             $state.go('register');
+        }
+
+        function getMap() {
+            ngMap.getMap().then(function (map) {
+                console.log(map.getCenter());
+                console.log('markers', map.getMarkers());
+            })
         }
     }
 })();
