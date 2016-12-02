@@ -26,11 +26,11 @@ public class Message implements Serializable {
     @Column(name = "date")
     private ZonedDateTime date;
 
-    @OneToOne(mappedBy = "id_user_from")
+    @ManyToOne
     @JsonIgnore
     private User id_user_from;
 
-    @OneToOne(mappedBy = "id_user_from")
+    @ManyToOne
     @JsonIgnore
     private User id_user_to;
 

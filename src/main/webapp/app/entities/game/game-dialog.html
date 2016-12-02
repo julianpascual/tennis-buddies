@@ -1,0 +1,60 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myGameLabel">Create or edit a Game</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.game.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.game.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_date">Date</label>
+                <div class="input-group">
+                    <input id="field_date" type="text" class="form-control" name="date" datetime-picker="{{dateformat}}" ng-model="vm.game.date" is-open="vm.datePickerOpenStatus.date"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_result">Result</label>
+            <input type="text" class="form-control" name="result" id="field_result"
+                    ng-model="vm.game.result"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_status">Status</label>
+            <select class="form-control" id="field_status" name="status" ng-model="vm.game.statusId" ng-options="game_status.id as game_status.status for game_status in vm.game_statuses"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="tennisBuddiesApp.game.id_user_requestor" for="field_id_user_requestor">Id User Requestor</label>
+            <select class="form-control" id="field_id_user_requestor" name="id_user_requestor" ng-model="vm.game.id_user_requestorId" ng-options="user.id as user.login for user in vm.users"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="tennisBuddiesApp.game.id_user_requested" for="field_id_user_requested">Id User Requested</label>
+            <select class="form-control" id="field_id_user_requested" name="id_user_requested" ng-model="vm.game.id_user_requestedId" ng-options="user.id as user.login for user in vm.users"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

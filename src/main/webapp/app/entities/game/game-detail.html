@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Game</span> {{vm.game.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Date</span></dt>
+        <dd>
+            <span>{{vm.game.date | date:'medium'}}</span>
+        </dd>
+        <dt><span>Result</span></dt>
+        <dd>
+            <span>{{vm.game.result}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <a ui-sref="game-status-detail({id:vm.game.statusId})">{{vm.game.statusStatus}}</a>
+        </dd>
+        <dt><span data-translate="tennisBuddiesApp.game.id_user_requestor">Id User Requestor</span></dt>
+        <dd>
+            {{vm.game.id_user_requestorLogin}}
+        </dd>
+        <dt><span data-translate="tennisBuddiesApp.game.id_user_requested">Id User Requested</span></dt>
+        <dd>
+            {{vm.game.id_user_requestedLogin}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="game-detail.edit({id:vm.game.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

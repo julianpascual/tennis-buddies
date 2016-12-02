@@ -24,12 +24,10 @@ public class Review implements Serializable {
     @Column(name = "comment")
     private String comment;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private User id_user_from;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private User id_user_to;
 
     public Long getId() {

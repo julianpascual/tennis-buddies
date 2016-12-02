@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "status",
+            "otherEntityName": "game_status",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "status"
+        },
+        {
+            "relationshipName": "id_user_requestor",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "id_user_requested",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "result",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161202004852",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "game",
+    "pagination": "no"
+}

@@ -1,0 +1,15 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161202004527",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "game_status",
+    "pagination": "no"
+}
