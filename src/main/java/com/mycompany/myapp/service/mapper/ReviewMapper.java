@@ -13,7 +13,9 @@ import java.util.List;
 public interface ReviewMapper {
 
     @Mapping(source = "id_user_from.id", target = "id_user_fromId")
+    @Mapping(source = "id_user_from.login", target = "id_user_fromLogin")
     @Mapping(source = "id_user_to.id", target = "id_user_toId")
+    @Mapping(source = "id_user_to.login", target = "id_user_toLogin")
     ReviewDTO reviewToReviewDTO(Review review);
 
     List<ReviewDTO> reviewsToReviewDTOs(List<Review> reviews);

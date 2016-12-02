@@ -25,6 +25,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,6 +50,10 @@ public class ReviewResourceIntTest {
 
     private static final String DEFAULT_COMMENT = "AAAAAAAAAA";
     private static final String UPDATED_COMMENT = "BBBBBBBBBB";
+
+    private static final ZonedDateTime DEFAULT_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_DATE_STR = DateTimeFormatter.ISO_INSTANT.format(DEFAULT_DATE);
 
     @Inject
     private ReviewRepository reviewRepository;
@@ -87,7 +96,8 @@ public class ReviewResourceIntTest {
     public static Review createEntity(EntityManager em) {
         Review review = new Review()
                 .review(DEFAULT_REVIEW)
-                .comment(DEFAULT_COMMENT);
+                .comment(DEFAULT_COMMENT)
+                .date(DEFAULT_DATE);
         return review;
     }
 
@@ -115,6 +125,7 @@ public class ReviewResourceIntTest {
         Review testReview = reviews.get(reviews.size() - 1);
         assertThat(testReview.getReview()).isEqualTo(DEFAULT_REVIEW);
         assertThat(testReview.getComment()).isEqualTo(DEFAULT_COMMENT);
+        assertThat(testReview.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
     @Test
@@ -129,7 +140,8 @@ public class ReviewResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(review.getId().intValue())))
                 .andExpect(jsonPath("$.[*].review").value(hasItem(DEFAULT_REVIEW)))
-                .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT.toString())));
+                .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT.toString())))
+                .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE_STR)));
     }
 
     @Test
@@ -144,7 +156,8 @@ public class ReviewResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(review.getId().intValue()))
             .andExpect(jsonPath("$.review").value(DEFAULT_REVIEW))
-            .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT.toString()));
+            .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT.toString()))
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE_STR));
     }
 
     @Test
@@ -166,7 +179,8 @@ public class ReviewResourceIntTest {
         Review updatedReview = reviewRepository.findOne(review.getId());
         updatedReview
                 .review(UPDATED_REVIEW)
-                .comment(UPDATED_COMMENT);
+                .comment(UPDATED_COMMENT)
+                .date(UPDATED_DATE);
         ReviewDTO reviewDTO = reviewMapper.reviewToReviewDTO(updatedReview);
 
         restReviewMockMvc.perform(put("/api/reviews")
@@ -180,6 +194,7 @@ public class ReviewResourceIntTest {
         Review testReview = reviews.get(reviews.size() - 1);
         assertThat(testReview.getReview()).isEqualTo(UPDATED_REVIEW);
         assertThat(testReview.getComment()).isEqualTo(UPDATED_COMMENT);
+        assertThat(testReview.getDate()).isEqualTo(UPDATED_DATE);
     }
 
     @Test

@@ -4,13 +4,15 @@
         {
             "relationshipName": "id_user_from",
             "otherEntityName": "user",
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
             "ownerSide": true
         },
         {
             "relationshipName": "id_user_to",
             "otherEntityName": "user",
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
             "ownerSide": true
         }
     ],
@@ -24,6 +26,10 @@
             "fieldName": "comment",
             "fieldType": "String",
             "fieldValidateRules": []
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
         }
     ],
     "changelogDate": "20161202003209",

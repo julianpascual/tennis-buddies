@@ -1,6 +1,5 @@
 package com.mycompany.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,11 +26,9 @@ public class Message implements Serializable {
     private ZonedDateTime date;
 
     @ManyToOne
-    @JsonIgnore
     private User id_user_from;
 
     @ManyToOne
-    @JsonIgnore
     private User id_user_to;
 
     public Long getId() {

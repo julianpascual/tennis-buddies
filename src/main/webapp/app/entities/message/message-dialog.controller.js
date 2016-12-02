@@ -5,9 +5,9 @@
         .module('tennisBuddiesApp')
         .controller('MessageDialogController', MessageDialogController);
 
-    MessageDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Message', 'Jhi_user'];
+    MessageDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Message', 'User'];
 
-    function MessageDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Message, Jhi_user) {
+    function MessageDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Message, User) {
         var vm = this;
 
         vm.message = entity;
@@ -15,7 +15,7 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.jhi_users = Jhi_user.query();
+        vm.users = User.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

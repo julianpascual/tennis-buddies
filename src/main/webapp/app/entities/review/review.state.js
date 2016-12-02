@@ -97,6 +97,7 @@
                             return {
                                 review: null,
                                 comment: null,
+                                date: null,
                                 id: null
                             };
                         }

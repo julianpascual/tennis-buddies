@@ -5,9 +5,9 @@
         .module('tennisBuddiesApp')
         .controller('MessageDetailController', MessageDetailController);
 
-    MessageDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Message', 'Jhi_user'];
+    MessageDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Message', 'User'];
 
-    function MessageDetailController($scope, $rootScope, $stateParams, previousState, entity, Message, Jhi_user) {
+    function MessageDetailController($scope, $rootScope, $stateParams, previousState, entity, Message, User) {
         var vm = this;
 
         vm.message = entity;

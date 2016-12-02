@@ -4,9 +4,9 @@
         .module('tennisBuddiesApp')
         .factory('Review', Review);
 
-    Review.$inject = ['$resource'];
+    Review.$inject = ['$resource', 'DateUtils'];
 
-    function Review ($resource) {
+    function Review ($resource, DateUtils) {
         var resourceUrl =  'api/reviews/:id';
 
         return $resource(resourceUrl, {}, {
@@ -16,6 +16,7 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
+                        data.date = DateUtils.convertDateTimeFromServer(data.date);
                     }
                     return data;
                 }

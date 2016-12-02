@@ -3,17 +3,17 @@
     "relationships": [
         {
             "relationshipName": "id_user_from",
-            "otherEntityName": "jhi_user",
-            "relationshipType": "one-to-one",
-            "ownerSide": false,
-            "otherEntityRelationshipName": "id_user_from"
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
         },
         {
             "relationshipName": "id_user_to",
-            "otherEntityName": "jhi_user",
-            "relationshipType": "one-to-one",
-            "ownerSide": false,
-            "otherEntityRelationshipName": "id_user_from"
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
         }
     ],
     "fields": [

@@ -12,13 +12,17 @@
         <dd>
             <span>{{vm.review.comment}}</span>
         </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+            <span>{{vm.review.date | date:'medium'}}</span>
+        </dd>
         <dt><span data-translate="tennisBuddiesApp.review.id_user_from">Id User From</span></dt>
         <dd>
-            {{vm.review.id_user_from}}
+            {{vm.review.id_user_fromLogin}}
         </dd>
         <dt><span data-translate="tennisBuddiesApp.review.id_user_to">Id User To</span></dt>
         <dd>
-            {{vm.review.id_user_to}}
+            {{vm.review.id_user_toLogin}}
         </dd>
     </dl>
 

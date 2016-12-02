@@ -13,7 +13,6 @@ import javax.inject.Inject;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing Message.
@@ -57,36 +56,6 @@ public class MessageService {
             .collect(Collectors.toCollection(LinkedList::new));
 
         return result;
-    }
-
-
-    /**
-     *  get all the messages where Id_user_from is null.
-     *  @return the list of entities
-     */
-    @Transactional(readOnly = true) 
-    public List<MessageDTO> findAllWhereId_user_fromIsNull() {
-        log.debug("Request to get all messages where Id_user_from is null");
-        return StreamSupport
-            .stream(messageRepository.findAll().spliterator(), false)
-            .filter(message -> message.getId_user_from() == null)
-            .map(messageMapper::messageToMessageDTO)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
-
-
-    /**
-     *  get all the messages where Id_user_to is null.
-     *  @return the list of entities
-     */
-    @Transactional(readOnly = true) 
-    public List<MessageDTO> findAllWhereId_user_toIsNull() {
-        log.debug("Request to get all messages where Id_user_to is null");
-        return StreamSupport
-            .stream(messageRepository.findAll().spliterator(), false)
-            .filter(message -> message.getId_user_to() == null)
-            .map(messageMapper::messageToMessageDTO)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

@@ -29,6 +29,14 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="id_user_from_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="id_user_to_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="message" columnName="date" columnDataType="datetime"/>

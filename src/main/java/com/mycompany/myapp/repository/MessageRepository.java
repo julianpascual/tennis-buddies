@@ -12,4 +12,10 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface MessageRepository extends JpaRepository<Message,Long> {
 
+    @Query("select message from Message message where message.id_user_from.login = ?#{principal.username}")
+    List<Message> findById_user_fromIsCurrentUser();
+
+    @Query("select message from Message message where message.id_user_to.login = ?#{principal.username}")
+    List<Message> findById_user_toIsCurrentUser();
+
 }

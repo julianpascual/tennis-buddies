@@ -18,7 +18,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing Message.
@@ -77,20 +76,11 @@ public class MessageResource {
     /**
      * GET  /messages : get all the messages.
      *
-     * @param filter the filter of the request
      * @return the ResponseEntity with status 200 (OK) and the list of messages in body
      */
     @GetMapping("/messages")
     @Timed
-    public List<MessageDTO> getAllMessages(@RequestParam(required = false) String filter) {
-        if ("id_user_from-is-null".equals(filter)) {
-            log.debug("REST request to get all Messages where id_user_from is null");
-            return messageService.findAllWhereId_user_fromIsNull();
-        }
-        if ("id_user_to-is-null".equals(filter)) {
-            log.debug("REST request to get all Messages where id_user_to is null");
-            return messageService.findAllWhereId_user_toIsNull();
-        }
+    public List<MessageDTO> getAllMessages() {
         log.debug("REST request to get all Messages");
         return messageService.findAll();
     }

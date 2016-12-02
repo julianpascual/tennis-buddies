@@ -1,5 +1,6 @@
 package com.mycompany.myapp.service.dto;
 
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,11 +18,19 @@ public class ReviewDTO implements Serializable {
 
     private String comment;
 
+    private ZonedDateTime date;
+
 
     private Long id_user_fromId;
     
+
+    private String id_user_fromLogin;
+
     private Long id_user_toId;
     
+
+    private String id_user_toLogin;
+
     public Long getId() {
         return id;
     }
@@ -43,6 +52,13 @@ public class ReviewDTO implements Serializable {
     public void setComment(String comment) {
         this.comment = comment;
     }
+    public ZonedDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(ZonedDateTime date) {
+        this.date = date;
+    }
 
     public Long getId_user_fromId() {
         return id_user_fromId;
@@ -52,12 +68,30 @@ public class ReviewDTO implements Serializable {
         this.id_user_fromId = userId;
     }
 
+
+    public String getId_user_fromLogin() {
+        return id_user_fromLogin;
+    }
+
+    public void setId_user_fromLogin(String userLogin) {
+        this.id_user_fromLogin = userLogin;
+    }
+
     public Long getId_user_toId() {
         return id_user_toId;
     }
 
     public void setId_user_toId(Long userId) {
         this.id_user_toId = userId;
+    }
+
+
+    public String getId_user_toLogin() {
+        return id_user_toLogin;
+    }
+
+    public void setId_user_toLogin(String userLogin) {
+        this.id_user_toLogin = userLogin;
     }
 
     @Override
@@ -87,6 +121,7 @@ public class ReviewDTO implements Serializable {
             "id=" + id +
             ", review='" + review + "'" +
             ", comment='" + comment + "'" +
+            ", date='" + date + "'" +
             '}';
     }
 }

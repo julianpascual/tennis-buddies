@@ -28,13 +28,22 @@
             <column name="comment" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-                        <column name="id_user_from_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>            <column name="id_user_to_id" type="bigint">
-                <constraints unique="true" nullable="true" />
+            
+            <column name="date" type="timestamp">
+                <constraints nullable="true" />
             </column>
+            
+            <column name="id_user_from_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="id_user_to_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="review" columnName="date" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

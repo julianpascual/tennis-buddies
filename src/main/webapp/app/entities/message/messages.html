@@ -21,6 +21,8 @@
                     <th><span>ID</span></th>
                     <th><span>Message</span></th>
                     <th><span>Date</span></th>
+                    <th><span data-translate="tennisBuddiesApp.message.id_user_from">Id User From</span></th>
+                    <th><span data-translate="tennisBuddiesApp.message.id_user_to">Id User To</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,6 +31,12 @@
                     <td><a ui-sref="message-detail({id:message.id})">{{message.id}}</a></td>
                     <td>{{message.message}}</td>
                     <td>{{message.date | date:'medium'}}</td>
+                    <td>
+                        {{message.id_user_fromLogin}}
+                    </td>
+                    <td>
+                        {{message.id_user_toLogin}}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

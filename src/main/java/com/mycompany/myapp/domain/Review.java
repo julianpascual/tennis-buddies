@@ -3,6 +3,7 @@ package com.mycompany.myapp.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
@@ -23,6 +24,9 @@ public class Review implements Serializable {
 
     @Column(name = "comment")
     private String comment;
+
+    @Column(name = "date")
+    private ZonedDateTime date;
 
     @ManyToOne
     private User id_user_from;
@@ -62,6 +66,19 @@ public class Review implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public ZonedDateTime getDate() {
+        return date;
+    }
+
+    public Review date(ZonedDateTime date) {
+        this.date = date;
+        return this;
+    }
+
+    public void setDate(ZonedDateTime date) {
+        this.date = date;
     }
 
     public User getId_user_from() {
@@ -116,6 +133,7 @@ public class Review implements Serializable {
             "id=" + id +
             ", review='" + review + "'" +
             ", comment='" + comment + "'" +
+            ", date='" + date + "'" +
             '}';
     }
 }
