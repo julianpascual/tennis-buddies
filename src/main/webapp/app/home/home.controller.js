@@ -9,7 +9,6 @@
 
     function HomeController ($scope, Principal, LoginService, NgMap, $state) {
         var vm = this;
-
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
@@ -19,9 +18,7 @@
         });
 
         NgMap.getMap().then(function(map) {
-            console.log(map.getCenter());
-            console.log('markers', map.markers);
-            console.log('shapes', map.shapes);
+
         });
 
         getAccount();
@@ -34,13 +31,6 @@
         }
         function register () {
             $state.go('register');
-        }
-
-        function getMap() {
-            ngMap.getMap().then(function (map) {
-                console.log(map.getCenter());
-                console.log('markers', map.getMarkers());
-            })
         }
     }
 })();
