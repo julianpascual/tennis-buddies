@@ -21,8 +21,16 @@
                 <ng-map map-type-control="false" street-view-control="false" center="current-location" zoom="13" default-style="false" style="height: 450px">
 
                     <marker ng-repeat="user in vm.users" animation="DROP" icon="../content/images/tennis-marker.png"
-                            position="{{user.lastPosition}}"></marker>
+                            position="{{user.lastPosition}}"
+                            on-click="vm.showDetail(user)"
+                    ></marker>
 
+                    <info-window id="user-info">
+                        <div>
+                            id: {{vm.user.id}}<br/>
+                            <a href="#" ng-click="vm.clicked()">Click Here</a>
+                        </div>
+                    </info-window>
                 </ng-map>
             </div>
         </div>

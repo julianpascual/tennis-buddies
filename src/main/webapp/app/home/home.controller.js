@@ -5,9 +5,9 @@
         .module('tennisBuddiesApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', 'NgMap', 'User' , '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', 'User', 'NgMap' , '$state'];
 
-    function HomeController ($scope, Principal, LoginService, NgMap, User, $state) {
+    function HomeController ($scope, Principal, LoginService, User, NgMap, $state) {
         var vm = this;
         vm.account = null;
         vm.users = [];
@@ -19,7 +19,8 @@
         });
 
         NgMap.getMap().then(function(map) {
-
+            vm.map = map;
+            console.log(vm.map);
         });
 
         getAccount();
@@ -50,15 +51,22 @@
                 }
             }
             vm.users = data;
+            console.log(vm.users);
         }
 
         function onError(error) {
             console.log('Error retrieving users: ', error);
         }
 
-        $scope.mySplit = function(string, nb) {
-            var array = string.split(';');
-            return array[nb];
-        }
+
+        vm.showDetail = function(e, user) {
+            vm.user = user;
+            vm.map.showInfoWindow()
+            console.log(vm.map);
+        };
+
+        vm.hideDetail = function() {
+            vm.map.hideInfoWindow('user-info');
+        };
     }
 })();
