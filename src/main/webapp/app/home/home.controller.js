@@ -20,7 +20,6 @@
 
         NgMap.getMap().then(function(map) {
             vm.map = map;
-            console.log(vm.map);
         });
 
         getAccount();
@@ -51,7 +50,6 @@
                 }
             }
             vm.users = data;
-            console.log(vm.users);
         }
 
         function onError(error) {
@@ -61,8 +59,7 @@
 
         vm.showDetail = function(e, user) {
             vm.user = user;
-            vm.map.showInfoWindow()
-            console.log(vm.map);
+            vm.map.showInfoWindow('user-info', 'm' + user.id);
         };
 
         vm.hideDetail = function() {
