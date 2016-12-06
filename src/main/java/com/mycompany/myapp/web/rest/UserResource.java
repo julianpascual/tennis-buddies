@@ -175,6 +175,24 @@ public class UserResource {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+
+    //TODO: hacer servicio para obtener las reviews del user
+    /**
+     * GET  /users/reviews/:id : get the review for the user with that "id".
+     *
+     * @param id the id of the user to find
+     * @return the ResponseEntity with status 200 (OK) and with body the "id" user, or with status 404 (Not Found)
+     */
+    @GetMapping("/users/reviews{id:" + Constants.ID_REGEX + "}")
+    @Timed
+    public ResponseEntity<ManagedUserVM> getUserReviews(@PathVariable Long id) {
+        log.debug("REST request to get User : {}", id);
+        return userService.getUserWithAuthoritiesByLogin(id.toString())
+            .map(ManagedUserVM::new)
+            .map(managedUserVM -> new ResponseEntity<>(managedUserVM, HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     /**
      * DELETE /users/:login : delete the "login" User.
      *
