@@ -16,18 +16,25 @@
                     You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
                 </div>
             </div>-->
-
             <div>
+
                 <ng-map map-type-control="false" street-view-control="false" center="current-location" zoom="13" default-style="false" style="height: 450px">
 
                     <marker id='m{{user.id}}' ng-repeat="user in vm.users" animation="DROP" icon="../content/images/tennis-marker.png"
                             position="{{user.lastPosition}}"
-                            on-click="vm.showDetail(user)"
-                    ></marker>
+                            on-click="vm.showDetail(user)">
+                    </marker>
 
                     <info-window id="user-info">
                         <div>
-                            id: {{vm.user.id}}<br/>
+                            User: {{vm.user.id}}<br/>
+                            <ng-rating ng-model="vm.review"
+                                       icon-class="'fa fa-star fa-1'"
+                                       editable="false"
+                                       stars-count="5"
+                                       based-on="5"
+                                       show-grade="true">
+                            </ng-rating><br/>
                             <a href="#" ng-click="vm.clicked()">Click Here</a>
                         </div>
                     </info-window>

@@ -106,12 +106,12 @@ public class ReviewResource {
      * @param loginId the loginId of the user to retrieve all the reviews
      * @return the ResponseEntity with status 200 (OK) and with body the reviewDTO, or with status 404 (Not Found)
      */
-    @GetMapping("/reviews/{id}")
-    @Timed
-    public List<ReviewDTO> getReviewsByLoginId(@PathVariable String loginId) {
-        log.debug("REST request to get Reviews of User: {}", loginId);
-        return reviewService.findAllByUserId(loginId);
-    }
+//    @GetMapping("/reviews/{id}")
+//    @Timed
+//    public List<ReviewDTO> getReviewsByLoginId(@PathVariable String loginId) {
+//        log.debug("REST request to get Reviews of User: {}", loginId);
+//        return reviewService.findAllByUserId(loginId);
+//    }
 
     /**
      * DELETE  /reviews/:id : delete the "id" review.

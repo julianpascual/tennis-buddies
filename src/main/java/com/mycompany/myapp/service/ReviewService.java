@@ -63,15 +63,15 @@ public class ReviewService {
      *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true)
-    public List<ReviewDTO> findAllByUserId(String userId) {
-        log.debug("Request to get all Reviews for User with Id: ", userId);
-        List<ReviewDTO> result = reviewRepository.findBy_Id_User(userId).stream()
-            .map(reviewMapper::reviewToReviewDTO)
-            .collect(Collectors.toCollection(LinkedList::new));
-
-        return result;
-    }
+//    @Transactional(readOnly = true)
+//    public List<ReviewDTO> findAllByUserId(String userId) {
+//        log.debug("Request to get all Reviews for User with Id: ", userId);
+//        List<ReviewDTO> result = reviewRepository.findBy_Id_User(userId).stream()
+//            .map(reviewMapper::reviewToReviewDTO)
+//            .collect(Collectors.toCollection(LinkedList::new));
+//
+//        return result;
+//    }
 
     /**
      *  Get one review by id.

@@ -14,6 +14,7 @@
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
         vm.register = register;
+        vm.review = 3;
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
