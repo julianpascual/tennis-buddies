@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 public class MessageResource {
 
     private final Logger log = LoggerFactory.getLogger(MessageResource.class);
-        
+
     @Inject
     private MessageService messageService;
 
@@ -83,6 +83,19 @@ public class MessageResource {
     public List<MessageDTO> getAllMessages() {
         log.debug("REST request to get all Messages");
         return messageService.findAll();
+    }
+
+    /**
+     * GET  /messages/:idUserTo/:idUserFrom : get all the messages between users.
+     *  @param idUserTo the id of the user who receives the messages
+     *  @param idUserFrom the id of the user who sends the messages
+     * @return the ResponseEntity with status 200 (OK) and the list of messages in body
+     */
+    @GetMapping("/messages/{idUserTo}/{idUserFrom}")
+    @Timed
+    public List<MessageDTO> getAllMessagesBetweenUsers(String idUserTo, String idUserFrom) {
+        log.debug("REST request to get all Messages");
+        return messageService.findConversation(idUserFrom, idUserTo);
     }
 
     /**

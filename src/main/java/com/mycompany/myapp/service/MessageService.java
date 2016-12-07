@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class MessageService {
 
     private final Logger log = LoggerFactory.getLogger(MessageService.class);
-    
+
     @Inject
     private MessageRepository messageRepository;
 
@@ -45,13 +45,28 @@ public class MessageService {
 
     /**
      *  Get all the messages.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<MessageDTO> findAll() {
         log.debug("Request to get all Messages");
         List<MessageDTO> result = messageRepository.findAll().stream()
+            .map(messageMapper::messageToMessageDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+
+        return result;
+    }
+
+    /**
+     *  Get all the conversation between users.
+     *
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public List<MessageDTO> findConversation(String idUserFrom, String idUserTo) {
+        log.debug("Request to get all Messages");
+        List<MessageDTO> result = messageRepository.findConversation(idUserTo, idUserFrom).stream()
             .map(messageMapper::messageToMessageDTO)
             .collect(Collectors.toCollection(LinkedList::new));
 
@@ -64,7 +79,7 @@ public class MessageService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public MessageDTO findOne(Long id) {
         log.debug("Request to get Message : {}", id);
         Message message = messageRepository.findOne(id);
