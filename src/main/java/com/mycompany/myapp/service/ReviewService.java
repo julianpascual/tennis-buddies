@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class ReviewService {
 
     private final Logger log = LoggerFactory.getLogger(ReviewService.class);
-    
+
     @Inject
     private ReviewRepository reviewRepository;
 
@@ -45,13 +45,28 @@ public class ReviewService {
 
     /**
      *  Get all the reviews.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<ReviewDTO> findAll() {
         log.debug("Request to get all Reviews");
         List<ReviewDTO> result = reviewRepository.findAll().stream()
+            .map(reviewMapper::reviewToReviewDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+
+        return result;
+    }
+
+    /**
+     *  Get all the reviews by user id.
+     *
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public List<ReviewDTO> findAllByUserId(String userId) {
+        log.debug("Request to get all Reviews for User with Id: ", userId);
+        List<ReviewDTO> result = reviewRepository.findBy_Id_User(userId).stream()
             .map(reviewMapper::reviewToReviewDTO)
             .collect(Collectors.toCollection(LinkedList::new));
 
@@ -64,7 +79,7 @@ public class ReviewService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public ReviewDTO findOne(Long id) {
         log.debug("Request to get Review : {}", id);
         Review review = reviewRepository.findOne(id);
