@@ -24,15 +24,15 @@ public class GameDTO implements Serializable {
 
     private String statusStatus;
 
-    private Long id_user_requestorId;
+    private Long idUserRequestorId;
     
 
-    private String id_user_requestorLogin;
+    private String idUserRequestorLogin;
 
-    private Long id_user_requestedId;
+    private Long idUserRequestedId;
     
 
-    private String id_user_requestedLogin;
+    private String idUserRequestedLogin;
 
     public Long getId() {
         return id;
@@ -73,38 +73,38 @@ public class GameDTO implements Serializable {
         this.statusStatus = game_statusStatus;
     }
 
-    public Long getId_user_requestorId() {
-        return id_user_requestorId;
+    public Long getIdUserRequestorId() {
+        return idUserRequestorId;
     }
 
-    public void setId_user_requestorId(Long userId) {
-        this.id_user_requestorId = userId;
-    }
-
-
-    public String getId_user_requestorLogin() {
-        return id_user_requestorLogin;
-    }
-
-    public void setId_user_requestorLogin(String userLogin) {
-        this.id_user_requestorLogin = userLogin;
-    }
-
-    public Long getId_user_requestedId() {
-        return id_user_requestedId;
-    }
-
-    public void setId_user_requestedId(Long userId) {
-        this.id_user_requestedId = userId;
+    public void setIdUserRequestorId(Long userId) {
+        this.idUserRequestorId = userId;
     }
 
 
-    public String getId_user_requestedLogin() {
-        return id_user_requestedLogin;
+    public String getIdUserRequestorLogin() {
+        return idUserRequestorLogin;
     }
 
-    public void setId_user_requestedLogin(String userLogin) {
-        this.id_user_requestedLogin = userLogin;
+    public void setIdUserRequestorLogin(String userLogin) {
+        this.idUserRequestorLogin = userLogin;
+    }
+
+    public Long getIdUserRequestedId() {
+        return idUserRequestedId;
+    }
+
+    public void setIdUserRequestedId(Long userId) {
+        this.idUserRequestedId = userId;
+    }
+
+
+    public String getIdUserRequestedLogin() {
+        return idUserRequestedLogin;
+    }
+
+    public void setIdUserRequestedLogin(String userLogin) {
+        this.idUserRequestedLogin = userLogin;
     }
 
     @Override

@@ -14,17 +14,17 @@ public interface GameMapper {
 
     @Mapping(source = "status.id", target = "statusId")
     @Mapping(source = "status.status", target = "statusStatus")
-    @Mapping(source = "id_user_requestor.id", target = "id_user_requestorId")
-    @Mapping(source = "id_user_requestor.login", target = "id_user_requestorLogin")
-    @Mapping(source = "id_user_requested.id", target = "id_user_requestedId")
-    @Mapping(source = "id_user_requested.login", target = "id_user_requestedLogin")
+    @Mapping(source = "idUserRequestor.id", target = "idUserRequestorId")
+    @Mapping(source = "idUserRequestor.login", target = "idUserRequestorLogin")
+    @Mapping(source = "idUserRequested.id", target = "idUserRequestedId")
+    @Mapping(source = "idUserRequested.login", target = "idUserRequestedLogin")
     GameDTO gameToGameDTO(Game game);
 
     List<GameDTO> gamesToGameDTOs(List<Game> games);
 
     @Mapping(source = "statusId", target = "status")
-    @Mapping(source = "id_user_requestorId", target = "id_user_requestor")
-    @Mapping(source = "id_user_requestedId", target = "id_user_requested")
+    @Mapping(source = "idUserRequestorId", target = "idUserRequestor")
+    @Mapping(source = "idUserRequestedId", target = "idUserRequested")
     Game gameDTOToGame(GameDTO gameDTO);
 
     List<Game> gameDTOsToGames(List<GameDTO> gameDTOs);

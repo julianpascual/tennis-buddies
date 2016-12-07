@@ -22,8 +22,8 @@
                     <th><span>Date</span></th>
                     <th><span>Result</span></th>
                     <th><span>Status</span></th>
-                    <th><span data-translate="tennisBuddiesApp.game.id_user_requestor">Id User Requestor</span></th>
-                    <th><span data-translate="tennisBuddiesApp.game.id_user_requested">Id User Requested</span></th>
+                    <th><span>Id User Requestor</span></th>
+                    <th><span>Id User Requested</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -36,10 +36,10 @@
                         <a ui-sref="game-status-detail({id:game.statusId})">{{game.statusStatus}}</a>
                     </td>
                     <td>
-                        {{game.id_user_requestorLogin}}
+                        {{game.idUserRequestorLogin}}
                     </td>
                     <td>
-                        {{game.id_user_requestedLogin}}
+                        {{game.idUserRequestedLogin}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

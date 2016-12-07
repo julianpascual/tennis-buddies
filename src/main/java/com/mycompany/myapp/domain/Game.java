@@ -29,10 +29,10 @@ public class Game implements Serializable {
     private Game_status status;
 
     @ManyToOne
-    private User id_user_requestor;
+    private User idUserRequestor;
 
     @ManyToOne
-    private User id_user_requested;
+    private User idUserRequested;
 
     public Long getId() {
         return id;
@@ -81,30 +81,30 @@ public class Game implements Serializable {
         this.status = game_status;
     }
 
-    public User getId_user_requestor() {
-        return id_user_requestor;
+    public User getIdUserRequestor() {
+        return idUserRequestor;
     }
 
-    public Game id_user_requestor(User user) {
-        this.id_user_requestor = user;
+    public Game idUserRequestor(User user) {
+        this.idUserRequestor = user;
         return this;
     }
 
-    public void setId_user_requestor(User user) {
-        this.id_user_requestor = user;
+    public void setIdUserRequestor(User user) {
+        this.idUserRequestor = user;
     }
 
-    public User getId_user_requested() {
-        return id_user_requested;
+    public User getIdUserRequested() {
+        return idUserRequested;
     }
 
-    public Game id_user_requested(User user) {
-        this.id_user_requested = user;
+    public Game idUserRequested(User user) {
+        this.idUserRequested = user;
         return this;
     }
 
-    public void setId_user_requested(User user) {
-        this.id_user_requested = user;
+    public void setIdUserRequested(User user) {
+        this.idUserRequested = user;
     }
 
     @Override

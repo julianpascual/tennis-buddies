@@ -12,10 +12,10 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface GameRepository extends JpaRepository<Game,Long> {
 
-    @Query("select game from Game game where game.id_user_requestor.login = ?#{principal.username}")
-    List<Game> findById_user_requestorIsCurrentUser();
+    @Query("select game from Game game where game.idUserRequestor.login = ?#{principal.username}")
+    List<Game> findByIdUserRequestorIsCurrentUser();
 
-    @Query("select game from Game game where game.id_user_requested.login = ?#{principal.username}")
-    List<Game> findById_user_requestedIsCurrentUser();
+    @Query("select game from Game game where game.idUserRequested.login = ?#{principal.username}")
+    List<Game> findByIdUserRequestedIsCurrentUser();
 
 }

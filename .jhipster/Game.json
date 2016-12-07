@@ -8,14 +8,14 @@
             "otherEntityField": "status"
         },
         {
-            "relationshipName": "id_user_requestor",
+            "relationshipName": "idUserRequestor",
             "otherEntityName": "user",
             "relationshipType": "many-to-one",
             "otherEntityField": "login",
             "ownerSide": true
         },
         {
-            "relationshipName": "id_user_requested",
+            "relationshipName": "idUserRequested",
             "otherEntityName": "user",
             "relationshipType": "many-to-one",
             "otherEntityField": "login",
