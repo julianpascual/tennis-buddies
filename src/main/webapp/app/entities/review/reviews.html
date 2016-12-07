@@ -22,8 +22,8 @@
                     <th><span>Review</span></th>
                     <th><span>Comment</span></th>
                     <th><span>Date</span></th>
-                    <th><span data-translate="tennisBuddiesApp.review.id_user_from">Id User From</span></th>
-                    <th><span data-translate="tennisBuddiesApp.review.id_user_to">Id User To</span></th>
+                    <th><span>Id User From</span></th>
+                    <th><span>Id User To</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -34,10 +34,10 @@
                     <td>{{review.comment}}</td>
                     <td>{{review.date | date:'medium'}}</td>
                     <td>
-                        {{review.id_user_fromLogin}}
+                        {{review.idUserFromLogin}}
                     </td>
                     <td>
-                        {{review.id_user_toLogin}}
+                        {{review.idUserToLogin}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

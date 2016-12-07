@@ -21,15 +21,15 @@ public class ReviewDTO implements Serializable {
     private ZonedDateTime date;
 
 
-    private Long id_user_fromId;
+    private Long idUserFromId;
     
 
-    private String id_user_fromLogin;
+    private String idUserFromLogin;
 
-    private Long id_user_toId;
+    private Long idUserToId;
     
 
-    private String id_user_toLogin;
+    private String idUserToLogin;
 
     public Long getId() {
         return id;
@@ -60,38 +60,38 @@ public class ReviewDTO implements Serializable {
         this.date = date;
     }
 
-    public Long getId_user_fromId() {
-        return id_user_fromId;
+    public Long getIdUserFromId() {
+        return idUserFromId;
     }
 
-    public void setId_user_fromId(Long userId) {
-        this.id_user_fromId = userId;
-    }
-
-
-    public String getId_user_fromLogin() {
-        return id_user_fromLogin;
-    }
-
-    public void setId_user_fromLogin(String userLogin) {
-        this.id_user_fromLogin = userLogin;
-    }
-
-    public Long getId_user_toId() {
-        return id_user_toId;
-    }
-
-    public void setId_user_toId(Long userId) {
-        this.id_user_toId = userId;
+    public void setIdUserFromId(Long userId) {
+        this.idUserFromId = userId;
     }
 
 
-    public String getId_user_toLogin() {
-        return id_user_toLogin;
+    public String getIdUserFromLogin() {
+        return idUserFromLogin;
     }
 
-    public void setId_user_toLogin(String userLogin) {
-        this.id_user_toLogin = userLogin;
+    public void setIdUserFromLogin(String userLogin) {
+        this.idUserFromLogin = userLogin;
+    }
+
+    public Long getIdUserToId() {
+        return idUserToId;
+    }
+
+    public void setIdUserToId(Long userId) {
+        this.idUserToId = userId;
+    }
+
+
+    public String getIdUserToLogin() {
+        return idUserToLogin;
+    }
+
+    public void setIdUserToLogin(String userLogin) {
+        this.idUserToLogin = userLogin;
     }
 
     @Override

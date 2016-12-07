@@ -59,19 +59,20 @@ public class ReviewService {
     }
 
     /**
-     *  Get all the reviews by user id.
+     *  Get all the reviews for a user.
      *
+     *  @param login the id of the entity
      *  @return the list of entities
      */
-//    @Transactional(readOnly = true)
-//    public List<ReviewDTO> findAllByUserId(String userId) {
-//        log.debug("Request to get all Reviews for User with Id: ", userId);
-//        List<ReviewDTO> result = reviewRepository.findBy_Id_User(userId).stream()
-//            .map(reviewMapper::reviewToReviewDTO)
-//            .collect(Collectors.toCollection(LinkedList::new));
-//
-//        return result;
-//    }
+    @Transactional(readOnly = true)
+    public List<ReviewDTO> findAllForUser(String login) {
+        log.debug("Request to get all Reviews for user: " + login);
+        List<ReviewDTO> result = reviewRepository.findByIdUserTo_Login(login).stream()
+            .map(reviewMapper::reviewToReviewDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+
+        return result;
+    }
 
     /**
      *  Get one review by id.

@@ -2,14 +2,14 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "id_user_from",
+            "relationshipName": "idUserFrom",
             "otherEntityName": "user",
             "relationshipType": "many-to-one",
             "otherEntityField": "login",
             "ownerSide": true
         },
         {
-            "relationshipName": "id_user_to",
+            "relationshipName": "idUserTo",
             "otherEntityName": "user",
             "relationshipType": "many-to-one",
             "otherEntityField": "login",

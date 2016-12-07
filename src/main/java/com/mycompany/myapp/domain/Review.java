@@ -29,10 +29,10 @@ public class Review implements Serializable {
     private ZonedDateTime date;
 
     @ManyToOne
-    private User id_user_from;
+    private User idUserFrom;
 
     @ManyToOne
-    private User id_user_to;
+    private User idUserTo;
 
     public Long getId() {
         return id;
@@ -81,30 +81,30 @@ public class Review implements Serializable {
         this.date = date;
     }
 
-    public User getId_user_from() {
-        return id_user_from;
+    public User getIdUserFrom() {
+        return idUserFrom;
     }
 
-    public Review id_user_from(User user) {
-        this.id_user_from = user;
+    public Review idUserFrom(User user) {
+        this.idUserFrom = user;
         return this;
     }
 
-    public void setId_user_from(User user) {
-        this.id_user_from = user;
+    public void setIdUserFrom(User user) {
+        this.idUserFrom = user;
     }
 
-    public User getId_user_to() {
-        return id_user_to;
+    public User getIdUserTo() {
+        return idUserTo;
     }
 
-    public Review id_user_to(User user) {
-        this.id_user_to = user;
+    public Review idUserTo(User user) {
+        this.idUserTo = user;
         return this;
     }
 
-    public void setId_user_to(User user) {
-        this.id_user_to = user;
+    public void setIdUserTo(User user) {
+        this.idUserTo = user;
     }
 
     @Override

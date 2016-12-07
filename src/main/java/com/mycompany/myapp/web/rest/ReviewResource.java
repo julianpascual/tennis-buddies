@@ -2,10 +2,11 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.service.ReviewService;
-import com.mycompany.myapp.service.dto.ReviewDTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
+import com.mycompany.myapp.service.dto.ReviewDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing Review.
@@ -83,6 +86,19 @@ public class ReviewResource {
     }
 
     /**
+     * GET  /reviews/user/:login : get all the reviews for a particular user.
+     *
+     * @param login the id of the reviewDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and the list of reviews in body
+     */
+    @GetMapping("/reviews/user/{login}")
+    @Timed
+    public List<ReviewDTO> getAllReviewsForUser(String login) {
+        log.debug("REST request to get all Reviews for user: " + login);
+        return reviewService.findAllForUser(login);
+    }
+
+    /**
      * GET  /reviews/:id : get the "id" review.
      *
      * @param id the id of the reviewDTO to retrieve
@@ -99,19 +115,6 @@ public class ReviewResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
-    /**
-     * GET  /reviews/user/:loginId : get the "loginId" review.
-     *
-     * @param loginId the loginId of the user to retrieve all the reviews
-     * @return the ResponseEntity with status 200 (OK) and with body the reviewDTO, or with status 404 (Not Found)
-     */
-//    @GetMapping("/reviews/{id}")
-//    @Timed
-//    public List<ReviewDTO> getReviewsByLoginId(@PathVariable String loginId) {
-//        log.debug("REST request to get Reviews of User: {}", loginId);
-//        return reviewService.findAllByUserId(loginId);
-//    }
 
     /**
      * DELETE  /reviews/:id : delete the "id" review.
