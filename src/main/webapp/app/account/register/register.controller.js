@@ -18,8 +18,15 @@
         vm.register = register;
         vm.registerAccount = {};
         vm.success = null;
-        vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
+        vm.datePickerOpenStatus = {};
+        vm.format = 'dd-MMMM-yyyy';
+
+        vm.dateOptions = {
+            formatYear: 'yy',
+            minDate: new Date(1900, 1, 1),
+            startingDay: 1
+        };
 
         $timeout(function (){angular.element('#login').focus();});
 

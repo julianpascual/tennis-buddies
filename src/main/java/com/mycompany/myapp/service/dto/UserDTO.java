@@ -6,8 +6,10 @@ import com.mycompany.myapp.domain.Authority;
 import com.mycompany.myapp.domain.User;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.cglib.core.Local;
 
 import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -41,7 +43,7 @@ public class UserDTO {
     @Size(max = 100)
     private String lastPosition;
 
-    private ZonedDateTime birthday;
+    private LocalDate birthday;
 
     public UserDTO() {
     }
@@ -55,7 +57,7 @@ public class UserDTO {
 
     public UserDTO(String login, String firstName, String lastName,
         String email, boolean activated, String langKey, Set<String> authorities,
-                   String lastPosition, ZonedDateTime birthday) {
+                   String lastPosition, LocalDate birthday) {
 
         this.login = login;
         this.firstName = firstName;
@@ -98,7 +100,7 @@ public class UserDTO {
 
     public String getLastPosition() { return lastPosition; }
 
-    public ZonedDateTime getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 

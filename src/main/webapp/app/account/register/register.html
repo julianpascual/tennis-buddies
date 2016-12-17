@@ -99,7 +99,7 @@
                     <label class="control-label" for="birthday">Birthday</label>
                     <div class="input-group">
                         <input id="birthday" type="text" class="form-control" name="birthday"
-                               datetime-picker="{{dateformat}}" ng-model="vm.registerAccount.birthday"
+                               uib-datepicker-popup="{{format}}" datepicker-options="dateOptions" ng-model="vm.registerAccount.birthday"
                                is-open="vm.datePickerOpenStatus.date" required/>
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>

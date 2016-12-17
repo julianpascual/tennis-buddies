@@ -84,7 +84,7 @@ public class UserService {
     }
 
     public User createUser(String login, String password, String firstName, String lastName, String email,
-        String langKey, String lastPosition, ZonedDateTime birthday) {
+        String langKey, String lastPosition, LocalDate birthday) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -140,7 +140,7 @@ public class UserService {
         return user;
     }
 
-    public void updateUser(String firstName, String lastName, String email, String langKey, String lastPosition, ZonedDateTime birthday) {
+    public void updateUser(String firstName, String lastName, String email, String langKey, String lastPosition, LocalDate birthday) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
@@ -154,7 +154,7 @@ public class UserService {
     }
 
     public void updateUser(Long id, String login, String firstName, String lastName, String email,
-        boolean activated, String langKey, Set<String> authorities, String lastPosition, ZonedDateTime birthday) {
+        boolean activated, String langKey, Set<String> authorities, String lastPosition, LocalDate birthday) {
 
         Optional.of(userRepository
             .findOne(id))

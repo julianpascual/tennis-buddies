@@ -1,20 +1,19 @@
 package com.mycompany.myapp.domain;
 
-import com.mycompany.myapp.config.Constants;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mycompany.myapp.config.Constants;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import javax.validation.groups.ConvertGroup;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
-import java.time.ZonedDateTime;
 
 /**
  * A user.
@@ -59,7 +58,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String lastPosition;
 
     @Column(name = "birthday", nullable = false)
-    private ZonedDateTime birthday;
+    private LocalDate birthday;
 
     @NotNull
     @Column(nullable = false)
@@ -202,11 +201,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public String getLastPosition() { return lastPosition; }
 
-    public void setBirthday(ZonedDateTime birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
-    public ZonedDateTime getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
