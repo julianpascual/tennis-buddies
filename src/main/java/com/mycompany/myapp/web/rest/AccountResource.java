@@ -92,7 +92,7 @@ public class AccountResource {
                         request.getContextPath();       // "/myContextPath" or "" if deployed in root context
                     }
 
-                    mailService.sendActivationEmail(user, baseUrl);
+//                    mailService.sendActivationEmail(user, baseUrl);
                     return new ResponseEntity<>(HttpStatus.CREATED);
                 })
         );
@@ -240,7 +240,7 @@ public class AccountResource {
                     ":" +
                     request.getServerPort() +
                     request.getContextPath();
-                mailService.sendPasswordResetMail(user, baseUrl);
+//                mailService.sendPasswordResetMail(user, baseUrl);
                 return new ResponseEntity<>("e-mail was sent", HttpStatus.OK);
             }).orElse(new ResponseEntity<>("e-mail address not registered", HttpStatus.BAD_REQUEST));
     }
