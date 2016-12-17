@@ -18,6 +18,8 @@
         vm.register = register;
         vm.registerAccount = {};
         vm.success = null;
+        vm.datePickerOpenStatus = {};
+        vm.openCalendar = openCalendar;
 
         $timeout(function (){angular.element('#login').focus();});
 
@@ -44,6 +46,13 @@
                     }
                 });
             }
+        }
+
+        vm.datePickerOpenStatus.date = false;
+
+        function openCalendar (date) {
+            vm.datePickerOpenStatus[date] = true;
+
         }
     }
 })();
