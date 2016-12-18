@@ -12,8 +12,6 @@
 
         vm.message = entity;
         vm.clear = clear;
-        vm.datePickerOpenStatus = {};
-        vm.openCalendar = openCalendar;
         vm.save = save;
         vm.users = User.query();
 
@@ -27,6 +25,7 @@
 
         function save () {
             vm.isSaving = true;
+            vm.message.date = new Date(Date.now());
             if (vm.message.id !== null) {
                 Message.update(vm.message, onSaveSuccess, onSaveError);
             } else {
@@ -44,10 +43,5 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.date = false;
-
-        function openCalendar (date) {
-            vm.datePickerOpenStatus[date] = true;
-        }
     }
 })();
