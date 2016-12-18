@@ -1,6 +1,7 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.config.Constants;
 import com.mycompany.myapp.service.ReviewService;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.service.dto.ReviewDTO;
@@ -91,9 +92,9 @@ public class ReviewResource {
      * @param login the id of the reviewDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and the list of reviews in body
      */
-    @GetMapping("/reviews/user/{login}")
+    @GetMapping("/reviews/user/{login" + Constants.LOGIN_REGEX + "}")
     @Timed
-    public List<ReviewDTO> getAllReviewsForUser(String login) {
+    public List<ReviewDTO> getAllReviewsForUser(@PathVariable String login) {
         log.debug("REST request to get all Reviews for user: " + login);
         return reviewService.findAllForUser(login);
     }

@@ -1,29 +1,35 @@
 <div>
-    <h2><span>User</span> "{{vm.user.login}}"</h2>
+    <h2>
+        <span class="glyphicon glyphicon-user"></span>
+        <span><strong>{{vm.user.login}}</strong></span>
+    </h2>
     <dl class="dl-horizontal">
-        <dt><span>Login</span></dt>
-        <dd><span>{{vm.user.login}}</span></dd>
-        <dt><span>First Name</span></dt>
-        <dd>{{vm.user.firstName}}</dd>
-        <dt><span>Last Name</span></dt>
-        <dd>{{vm.user.lastName}}</dd>
+        <dt><span>Age</span></dt>
+        <dd>{{calculateAge(vm.user.birthday)}}</dd>
         <dt><span>Email</span></dt>
         <dd>{{vm.user.email}}</dd>
-        <dt><span>Activated</span></dt>
-        <dd>{{vm.user.activated}}</dd>
-        <dt><span>Created By</span></dt>
-        <dd>{{vm.user.createdBy}}</dd>
-        <dt><span>Created Date</span></dt>
-        <dd>{{vm.user.createdDate | date:'dd/MM/yy HH:mm' }}</dd>
-        <dt><span>Last Modified By</span></dt>
-        <dd>{{vm.user.lastModifiedBy}}</dd>
-        <dt><span>Last Modified Date</span></dt>
-        <dd>{{vm.user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</dd>
-        <dt><span>Profiles</span></dt>
+        <dt><span>Rating</span></dt>
         <dd>
-            <ul class="list-unstyled">
-                <li ng-repeat="authority in vm.user.authorities"><span>{{authority}}</span></li>
-            </ul>
+            <ng-rating ng-model="vm.rating"
+                       icon-class="'fa fa-star fa-1'"
+                       editable="false"
+                       stars-count="5"
+                       based-on="5">
+            </ng-rating>
         </dd>
     </dl>
+    <h4>Reviews:</h4>
+    <br>
+    <button class="btn btn-primary" ui-sref="message.new" >
+        <span class="glyphicon glyphicon"></span>
+        <span>
+            Send a Message
+        </span>
+    </button>
+    <button class="btn btn-primary" ui-sref="message.new" >
+        <span class="glyphicon glyphicon"></span>
+        <span>
+            Invite to a game
+        </span>
+    </button>
 </div>
