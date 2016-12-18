@@ -27,15 +27,17 @@
 
                     <info-window id="user-info">
                         <div>
-                            User: {{vm.user.id}}<br/>
+                            User: {{vm.user.login}}
+                            <br/>
                             <ng-rating ng-model="vm.review"
                                        icon-class="'fa fa-star fa-1'"
                                        editable="false"
                                        stars-count="5"
                                        based-on="5"
                                        show-grade="true">
-                            </ng-rating><br/>
-                            <a href="#" ng-click="vm.clicked()">Click Here</a>
+                            </ng-rating>
+                            <br/>
+                            <a ui-sref="user-detail({login:vm.user.login})">View user reviews</a>
                         </div>
                     </info-window>
                 </ng-map>

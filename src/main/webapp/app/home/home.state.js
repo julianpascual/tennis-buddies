@@ -21,6 +21,20 @@
                     controllerAs: 'vm'
                 }
             }
+        })
+        .state('user-detail', {
+            parent: 'app',
+            url: '/user-details/:login',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/user-details/user-detail.html',
+                    controller: 'UserDetailController',
+                    controllerAs: 'vm'
+                }
+            }
         });
     }
 })();
