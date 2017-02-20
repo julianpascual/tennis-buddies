@@ -5,7 +5,7 @@
     </h2>
     <dl class="dl-horizontal">
         <dt><span>Age</span></dt>
-        <dd>{{calculateAge(vm.user.birthday)}}</dd>
+        <dd ng-bind="calculateAge(vm.user.birthday)"></dd>
         <dt><span>Email</span></dt>
         <dd>{{vm.user.email}}</dd>
         <dt><span>Rating</span></dt>

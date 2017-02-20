@@ -8,7 +8,7 @@
     UserReviews.$inject = ['$resource'];
 
     function UserReviews ($resource) {
-        var service = $resource('api/reviews/user/:login', {}, {
+        var service = $resource('api/reviews/user/:login', {login: '@login'}, {
             'query': {method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

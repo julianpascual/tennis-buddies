@@ -5,9 +5,9 @@
         .module('tennisBuddiesApp')
         .controller('UserDetailController', UserDetailController);
 
-    UserDetailController.$inject = ['$stateParams', 'User', 'Review'];
+    UserDetailController.$inject = ['$stateParams', 'User', 'UserReviews'];
 
-    function UserDetailController ($stateParams, User, Review) {
+    function UserDetailController ($stateParams, User, UserReviews) {
         var vm = this;
 
         vm.load = load;
@@ -23,7 +23,7 @@
             User.get({login: login}, function(result) {
                 vm.user = result;
             });
-            Review.query({login: login}, function(result) {
+            UserReviews.query({login: login}, function(result) {
                 vm.reviews = result;
                 calculateRating(vm.reviews);
             });
