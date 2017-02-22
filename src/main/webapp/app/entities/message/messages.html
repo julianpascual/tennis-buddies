@@ -13,7 +13,7 @@
         <div class="chat-history">
             <div ng-repeat="message in vm.messages track by message.id">
                 <div class="message-data">
-                    <span class="message-data-name"><i class="fa fa-circle you"></i> {{message.idUserFromLogin}} - {{message.date}}</span>
+                    <span class="message-data-name"><i class="fa fa-circle you"></i> <strong>{{message.idUserFromLogin}}</strong> - {{message.date | date: 'medium'}}</span>
                 </div>
                 <div class="message you-message">
                     {{message.message}}
