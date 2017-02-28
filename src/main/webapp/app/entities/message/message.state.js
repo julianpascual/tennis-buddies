@@ -26,6 +26,23 @@
             resolve: {
             }
         })
+        .state('message-full', {
+            parent: 'entity',
+            url: '/message/{idUserFrom}/{idUserTo}',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'Messages'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/message/messages.html',
+                    controller: 'MessageController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+            }
+        })
         .state('message-detail', {
             parent: 'entity',
             url: '/message/{id}',

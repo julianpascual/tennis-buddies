@@ -18,6 +18,10 @@
             Message.query(function(result) {
                 vm.messages = result;
             });
+
+            console.log($state.params.idUserFrom);
+
+            console.log($state.params.idUserTo);
         }
     }
 })();
