@@ -19,9 +19,8 @@
                 vm.messages = result;
             });
 
-            console.log($state.params.idUserFrom);
-
-            console.log($state.params.idUserTo);
+            vm.idUserFrom = $state.params.idUserFrom;
+            vm.idUserTo = $state.params.idUserTo;
         }
     }
 })();

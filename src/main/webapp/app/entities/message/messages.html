@@ -11,78 +11,28 @@
 
     <div class="chat">
         <div class="chat-history">
-            <div ng-repeat="message in vm.messages track by message.id">
-                <div class="message-data">
-                    <span class="message-data-name"><i class="fa fa-circle you"></i> <strong>{{message.idUserFromLogin}}</strong> - {{message.date | date: 'medium'}}</span>
-                </div>
-                <div class="message you-message">
-                    {{message.message}}
-                </div>
-            </div>
 
-            <!--Esto es para cuando es el otro usuario-->
-            <!--<div class="message-data align-right">-->
-                <!--<span class="message-data-name">Ada - 02/02/2017 08:41PM</span> <i class="fa fa-circle me"></i>-->
-            <!--</div>-->
-            <!--<div class="message me-message float-right"> We should take a look at your onboarding and service delivery workflows, for most businesess there are many ways to save time and not compromise quality.  </div>-->
+            <div ng-repeat="message in vm.messages track by message.id">
+                <div ng-if="(vm.idUserFrom.toString() === message.idUserFromId.toString()) && (vm.idUserTo.toString() === message.idUserToId.toString())">
+                    <div class="message-data">
+                        <span class="message-data-name"><i class="fa fa-circle you"></i> <strong>{{message.idUserFromLogin}}</strong> - {{message.date | date: 'medium'}}</span>
+                    </div>
+                    <div class="message you-message">
+                        {{message.message}}
+                    </div>
+                </div>
+                <div ng-if="(vm.idUserFrom.toString() === message.idUserToId.toString()) && (vm.idUserTo.toString() === message.idUserFromId.toString())">
+                    <div class="message-data align-right">
+                        <span class="message-data-name"><i class="fa fa-circle you"></i> <strong>{{message.idUserToLogin}}</strong> - {{message.date | date: 'medium'}}</span>
+                    </div>
+                    <div class="message me-message float-right">
+                        {{message.message}}
+                    </div>
+                </div>
+
+            </div>
 
         </div> <!-- end chat-history -->
 
     </div> <!-- end chat -->
-
-
-    <!--<div class="table-responsive">-->
-
-
-
-
-
-        <!--<table class="jh-table table table-striped">-->
-            <!--<thead>-->
-            <!--<tr>-->
-                <!--<th><span>ID</span></th>-->
-                <!--<th><span>Message</span></th>-->
-                <!--<th><span>Date</span></th>-->
-                <!--<th><span>Id User From</span></th>-->
-                <!--<th><span>Id User To</span></th>-->
-                <!--<th></th>-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--<tr ng-repeat="message in vm.messages track by message.id">-->
-                <!--<td><a ui-sref="message-detail({id:message.id})">{{message.id}}</a></td>-->
-                <!--<td>{{message.message}}</td>-->
-                <!--<td>{{message.date | date:'medium'}}</td>-->
-                <!--<td>-->
-                    <!--{{message.idUserFromLogin}}-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--{{message.idUserToLogin}}-->
-                <!--</td>-->
-                <!--&lt;!&ndash;<td class="text-right">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="btn-group flex-btn-group-container">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<button type="submit"&ndash;&gt;-->
-                                <!--&lt;!&ndash;ui-sref="message-detail({id:message.id})"&ndash;&gt;-->
-                                <!--&lt;!&ndash;class="btn btn-info btn-sm">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<span class="glyphicon glyphicon-eye-open"></span>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<span class="hidden-xs hidden-sm"></span>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</button>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<button type="submit"&ndash;&gt;-->
-                                <!--&lt;!&ndash;ui-sref="message.edit({id:message.id})"&ndash;&gt;-->
-                                <!--&lt;!&ndash;class="btn btn-primary btn-sm">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<span class="glyphicon glyphicon-pencil"></span>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<span class="hidden-xs hidden-sm"></span>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</button>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<button type="submit"&ndash;&gt;-->
-                                <!--&lt;!&ndash;ui-sref="message.delete({id:message.id})"&ndash;&gt;-->
-                                <!--&lt;!&ndash;class="btn btn-danger btn-sm">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<span class="glyphicon glyphicon-remove-circle"></span>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<span class="hidden-xs hidden-sm"></span>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</button>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--&lt;!&ndash;</td>&ndash;&gt;-->
-            <!--</tr>-->
-            <!--</tbody>-->
-        <!--</table>-->
-    <!--</div>-->
 </div>
