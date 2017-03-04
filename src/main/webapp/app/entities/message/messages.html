@@ -35,4 +35,22 @@
         </div> <!-- end chat-history -->
 
     </div> <!-- end chat -->
+
+    <form name="editForm" role="form" novalidate ng-submit="vm.save()">
+        <div class="modal-body">
+            <div class="form-group">
+                <!--<input type="text" class="form-control" name="message" id="field_message"-->
+                       <!--ng-model="vm.message.message"-->
+                <!--/>-->
+                <textarea class="form-control" name="message" id="field_message"
+                          ng-model="vm.message.message" rows="4"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+                <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Send</span>
+            </button>
+        </div>
+    </form>
+
 </div>
